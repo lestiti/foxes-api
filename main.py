@@ -1,25 +1,27 @@
 from fastapi import FastAPI
-import requests
-from bs4 import BeautifulSoup
+from fastapi.responses import JSONResponse
 
 app = FastAPI()
 
-@app.get("/news")
-def get_latest_news():
-    url = "https://foxesbasketball.ch"
-    response = requests.get(url)
-    soup = BeautifulSoup(response.content, "html.parser")
+@app.get("/")
+def root():
+    return {"message": "Bienvenue sur l'API Foxes"}
 
-    articles = soup.select("article")  # ⚠️ À adapter selon la structure réelle du site
-    results = []
-
-    for article in articles[:5]:
-        titre = article.select_one("h2") or article.select_one("h3")
-        extrait = article.select_one("p")
-        if titre and extrait:
-            results.append({
-                "titre": titre.text.strip(),
-                "extrait": extrait.text.strip()
-            })
-
-    return {"actus": results}
+@app.get("/.well-known/ai-plugin.json")
+def get_plugin_manifest():
+    return JSONResponse({
+        "schema_version": "v1",
+        "name_for_human": "FOXES Actus API",
+        "name_for_model": "foxesApi",
+        "description_for_human": "Accède aux actualités et à la page d’accueil du site foxesbasketball.ch",
+        "description_for_model": "Utilise cette API pour récupérer les dernières nouvelles des Foxes et le titre de la page d’accueil.",
+        "auth": {"type": "none"},
+        "api": {
+            "type": "openapi",
+            "url": "https://foxes-api.onrender.com/openapi.json",
+            "is_user_authenticated": False
+        },
+        "logo_url": "https://upload.wikimedia.org/wikipedia/fr/thumb/5/5b/Foxes_Logo_Basketball.svg/800px-Foxes_Logo_Basketball.svg.png",
+        "contact_email": "support@foxesbasketball.ch",
+        "legal_info_url": "https://foxesbasketball.ch/legal"
+    })
