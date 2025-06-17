@@ -1,0 +1,73 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "FOXES Actus API",
+    "version": "1.0.0",
+    "description": "API pour accéder aux dernières actualités de foxesbasketball.ch"
+  },
+  "servers": [
+    {
+      "url": "https://foxes-api.onrender.com"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Page d’accueil de l’API",
+        "operationId": "getRoot",
+        "responses": {
+          "200": {
+            "description": "Message de bienvenue",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Bienvenue sur l'API Foxes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actus": {
+      "get": {
+        "summary": "Récupère les dernières actualités",
+        "operationId": "getActus",
+        "responses": {
+          "200": {
+            "description": "Liste des actus",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "actus": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "actus": [
+                    "Match du 20 juin",
+                    "Nouvel entraîneur annoncé"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
