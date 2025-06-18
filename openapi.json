@@ -1,9 +1,8 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.1.0",
   "info": {
-    "title": "FOXES Actus API",
-    "version": "1.0.0",
-    "description": "API pour accéder aux dernières actualités de foxesbasketball.ch"
+    "title": "FastAPI",
+    "version": "0.1.0"
   },
   "servers": [
     {
@@ -13,24 +12,14 @@
   "paths": {
     "/": {
       "get": {
-        "summary": "Page d’accueil de l’API",
-        "operationId": "getRoot",
+        "summary": "Root",
+        "operationId": "root__get",
         "responses": {
           "200": {
-            "description": "Message de bienvenue",
+            "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "message": "Bienvenue sur l'API Foxes"
-                }
+                "schema": {}
               }
             }
           }
@@ -39,30 +28,30 @@
     },
     "/actus": {
       "get": {
-        "summary": "Récupère les dernières actualités",
-        "operationId": "getActus",
+        "summary": "Get Actus",
+        "operationId": "get_actus_actus_get",
         "responses": {
           "200": {
-            "description": "Liste des actus",
+            "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "actus": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "example": {
-                  "actus": [
-                    "Match du 20 juin",
-                    "Nouvel entraîneur annoncé"
-                  ]
-                }
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/ai-plugin.json": {
+      "get": {
+        "summary": "Plugin Manifest",
+        "operationId": "plugin_manifest__well_known_ai_plugin_json_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
               }
             }
           }
