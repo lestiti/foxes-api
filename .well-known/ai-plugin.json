@@ -12,6 +12,6 @@
     "is_user_authenticated": false
   },
   "logo_url": "https://foxes-api.onrender.com/logo.png",
-  "contact_email": "support@foxes.com",
-  "legal_info_url": "https://foxes.com/legal"
+  "contact_email": "https://www.foxesbasketball.ch/accueil/contact/",
+  "legal_info_url": "https://www.foxesbasketball.ch/legal" 
 }
