@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Foxes Actus",
+  "name_for_model": "foxes_actus",
+  "description_for_model": "Récupère les dernières actualités du club Foxes.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://foxes-api.onrender.com/openapi.json",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://foxes-api.onrender.com/logo.png",
+  "contact_email": "support@foxes.com",
+  "legal_info_url": "https://foxes.com/legal"
+}
